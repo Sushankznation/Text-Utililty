@@ -2,34 +2,35 @@ import React, { useState } from "react";
 
 export default function TextForm(props) {
   const handleUpClick = () => {
+    //Upper Case
     let newText = text.toUpperCase();
     setText(newText);
     props.showAlert("Converted to uppercase!", "success");
   };
-
+//LowerCase
   const handleLoClick = () => {
     let newText = text.toLowerCase();
     setText(newText);
     props.showAlert("Converted to lowercase!", "success");
   };
-
+//Clear Text
   const handleClearClick = () => {
     let newText = "";
     setText(newText);
     props.showAlert("Text Cleared!", "success");
   };
-
+//Preview
   const handleOnChange = (event) => {
     setText(event.target.value);
   };
 
-  // Credits: A
+  // Copy Text
   const handleCopy = () => {
     navigator.clipboard.writeText(text);
     props.showAlert("Copied to Clipboard!", "success");
   };
 
-  // Credits: Coding Wala
+  // Extra Space remove
   const handleExtraSpaces = () => {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
@@ -37,8 +38,6 @@ export default function TextForm(props) {
   };
 
   const [text, setText] = useState("");
-  // text = "new text"; // Wrong way to change the state
-  // setText("new text"); // Correct way to change the state
   return (
     <>
       <div
